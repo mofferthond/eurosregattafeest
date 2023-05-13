@@ -8,7 +8,7 @@ from redis import Redis
 from rq import Connection, Queue, Worker
 
 from app import create_app, db
-from app.models import Role, User
+from app.models import Role, User, Vereniging
 from config import Config
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
@@ -17,7 +17,7 @@ migrate = Migrate(app, db)
 
 
 def make_shell_context():
-    return dict(app=app, db=db, User=User, Role=Role)
+    return dict(app=app, db=db, User=User, Role=Role, Vereniging=Vereniging)
 
 
 manager.add_command('shell', Shell(make_context=make_shell_context))
@@ -44,6 +44,52 @@ def recreate_db():
     db.create_all()
     db.session.commit()
 
+    aegir       = Vereniging(name="Aegir")
+    Argo        = Vereniging(name="Argo")
+    Asopos      = Vereniging(name="Asopos")
+    Euros       = Vereniging(name="Euros")
+    Theta       = Vereniging(name="Theta")
+    Gyas        = Vereniging(name="Gyas")
+    Homines     = Vereniging(name="Homines")
+    Krokipi     = Vereniging(name="Krokipi")
+    Laga        = Vereniging(name="Laga")
+    Nereus      = Vereniging(name="Nereus")
+    Njord       = Vereniging(name="Njord")
+    Okeanos     = Vereniging(name="Okeanos")
+    Orca        = Vereniging(name="Orca")
+    Palette     = Vereniging(name="Palette")
+    Pelargos    = Vereniging(name="Pelargos")
+    Phocas      = Vereniging(name="Phocas")
+    Proteus     = Vereniging(name="Proteus-Eretes")
+    Saurus      = Vereniging(name="Saurus")
+    sine        = Vereniging(name="Sine Fortuna")
+    Skadi       = Vereniging(name="Skadi")
+    Skoll       = Vereniging(name="Skoll")
+    TaPhemme    = Vereniging(name="Ta Phemme")
+    Triton      = Vereniging(name="Triton")
+    
+
+    db.session.add_all([aegir, Argo, Asopos, Euros, Theta       
+, Gyas        
+, Homines     
+, Krokipi     
+, Laga        
+, Nereus      
+, Njord       
+, Okeanos     
+, Orca        
+, Palette     
+, Pelargos    
+, Phocas      
+, Proteus     
+, Saurus      
+, sine        
+, Skadi       
+, Skoll       
+, TaPhemme    
+, Triton      ])
+    db.session.commit()
+
 
 @manager.option(
     '-n',
@@ -63,6 +109,8 @@ def add_fake_data(number_users):
 def setup_dev():
     """Runs the set-up needed for local development."""
     setup_general()
+
+
 
 
 @manager.command
@@ -115,6 +163,7 @@ def format():
 
     print('Running {}'.format(yapf))
     subprocess.call(yapf, shell=True)
+
 
 
 if __name__ == '__main__':
