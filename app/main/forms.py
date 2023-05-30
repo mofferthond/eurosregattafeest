@@ -22,7 +22,7 @@ from app.models import Vereniging
 class AddBeerForm(FlaskForm):
     vereniging = QuerySelectField('Vereniging', validators=[InputRequired()], get_label='name',
                             query_factory=lambda: db.session.query(Vereniging).order_by('name'))
-    amount = IntegerField('Aantal munten', validators=[InputRequired(), NumberRange(min=0)])
+    amount = IntegerField('Aantal munten', validators=[InputRequired(), NumberRange()])
     
     submit = SubmitField('Toevoegen')
 

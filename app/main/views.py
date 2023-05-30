@@ -26,6 +26,8 @@ def data():
             })
     return json
 
+
+
 @main.route('/new', methods=["GET", "POST"])
 def new():
     form = NewForm()

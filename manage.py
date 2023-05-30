@@ -69,25 +69,29 @@ def recreate_db():
     Triton      = Vereniging(name="Triton")
     
 
-    db.session.add_all([aegir, Argo, Asopos, Euros, Theta       
-, Gyas        
-, Homines     
-, Krokipi     
-, Laga        
-, Nereus      
-, Njord       
-, Okeanos     
-, Orca        
-, Palette     
-, Pelargos    
-, Phocas      
-, Proteus     
-, Saurus      
-, sine        
-, Skadi       
-, Skoll       
-, TaPhemme    
-, Triton      ])
+#     db.session.add_all([aegir, Argo, Asopos, Euros, Theta       
+# , Gyas        
+# , Homines     
+# , Krokipi     
+# , Laga        
+# , Nereus      
+# , Njord       
+# , Okeanos     
+# , Orca        
+# , Palette     
+# , Pelargos    
+# , Phocas      
+# , Proteus     
+# , Saurus      
+# , sine        
+# , Skadi       
+# , Skoll       
+# , TaPhemme    
+# , Triton      ])
+
+    disputen = ["O.D. Aditi", "Heerendispuut ISIS", "O.D. Wazig", "O.H. Sine Fortuna"]
+    for dispuut in disputen:
+        db.session.add(Vereniging(dispuut))
     db.session.commit()
 
 

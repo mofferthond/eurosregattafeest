@@ -68,6 +68,12 @@ table.selectable tr:hover {
     padding-top: 5px;
 }
 
+.title{
+    color: white;
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+
 .logo{
     position: absolute;
     bottom: 5vh;

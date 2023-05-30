@@ -4,12 +4,16 @@
 <link rel="stylesheet"
 href="https://fonts.googleapis.com/css?family=Roboto">
   <div class="wrapper">
+    <div class="text title">
+      Pitchers gekocht
+    </div>
     <div id="chart" class="chart">
       
     </div>
   </div>
   
-    <img class="logo" src="{{url_for('static', filename='images/logo.png')}}" alt="">
+    <img src="{{ url_for('static', filename='images/disputen.png') }}" alt="" class="logo">
+  
 
   <script>
     function createChart() {
